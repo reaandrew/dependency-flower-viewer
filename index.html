@@ -12,12 +12,44 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
+                    <h1>Dependency Visualiser</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Dependency Visualiser</h1>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
                     <div id="graph"></div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-12">
+                    <h1>Dependency Visualiser</h1>
                 </div>
             </div>
         </div>
     
+        <script src="/public/js/view-model.js"></script>
         <script src="/public/js/site.js"></script>
+        <script>
+           $(document).ready(function() {
+               var viewModel = new ViewModel();
+               viewModel.createProject('Project 1')
+                    .addPackage('pkg1')
+                    .addPackage('pkg2');
+
+               viewModel.createProject('Project 2')
+                    .addPackage('pkg1')
+                    .addPackage('pkg2')
+                    .addPackage('pkg3');
+
+               var view = new DependencyView('#graph');
+               view.draw(viewModel);
+           })
+        </script>
     </body>
 
 </html>
